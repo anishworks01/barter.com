@@ -1,0 +1,60 @@
+<%# Added the shared layout so this page loads style.css. %>
+<%- layout("layouts/boilerplate.ejs") %>
+<div class="row mt-3">
+   <div class="col-8 offset-2">
+    <br><br>
+<h3>Add Details of the New Item</h3>
+
+
+
+
+   
+<form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="title" class="form-label">Product Name:</label>
+        <input type="text" id="title" placeholder="Enter the Name of the Product" name="listing[title]" class="form-control" required>
+        <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" name="listing[description]" placeholder="Describe the Product" class="form-control" required></textarea>
+        <div class="invalid-feedback">Please provide a description.</div>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload Image:</label>
+        <input type="file" id="image" name="listing[image]"  class="form-control" required >
+        <div class="invalid-feedback">Please provide an image URL.</div>
+    </div>
+    <div class="row">
+            <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label">Price:</label>
+                    <input  id="price" name="listing[price]" placeholder="Enter Price" class="form-control" required>
+                    <div class="invalid-feedback">Please provide a price.</div>
+            </div>
+            <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label">Country:</label>
+                    <input type="text" id="country" name="listing[country]" placeholder="Enter Country" class="form-control" required>
+                    <div class="invalid-feedback">Please provide a country.</div>
+            </div>
+    </div>
+    
+    
+    <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input type="text" id="location" name="listing[location]" placeholder="Street, City" class="form-control" required>
+        <div class="invalid-feedback">Please provide a location.</div>
+    </div>
+    
+    
+    
+    <div class="mb-3">
+        <label for="trade" class="form-label">Trade For:</label>
+        <input type="text" id="trade" name="listing[trade]" placeholder="Enter the item you want to trade for" class="form-control" required>
+        <div class="invalid-feedback">Please provide a trade option.</div>
+    </div>
+    
+    <button type="submit" class="btn btn-dark mt-3">Add Item</button>
+</form>
+</div>
+</div>
+<br><br>

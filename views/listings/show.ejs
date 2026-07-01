@@ -1,0 +1,41 @@
+<%# Added the shared layout so this page loads style.css. %>
+<%- layout("layouts/boilerplate.ejs") %>
+<div class="row mt-3 ">
+    <div class="col-8 offset-2">
+        <h3>Listing Details</h3>
+    </div>
+
+<div class="card col-6 offset-3 show-card">
+    <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing-img">
+    <div class="card-body">
+        <p class="card-text">
+        <i>Owned By : <%= listing.owner.username  %></i>
+    </p>
+    <p class="card-text">
+            <b><%= listing.title %></b> <br>
+    </p>
+    <p class="card-text">
+            <%= listing.description %> <br>
+    </p>
+    <p class="card-text">
+            &#8377; <%= listing.price.toLocaleString("en-IN") %><b>/ OR</b> <br> <%= listing.trade %>
+    </p>
+    <p class="card-text">
+            <%= listing.location %>
+    </p>
+    <p class="card-text">
+            <%= listing.country %>
+    </p>
+    </div>
+</div>
+<% if(currentUser && currentUser._id.equals(listing.owner._id)){ %>
+<div class="btns mb-3">
+    <a href="/listings/<%= listing._id %>/edit" class=" btn btn-outline-dark offset-3">Edit</a>
+
+<form action="/listings/<%= listing._id %>?_method=DELEtE" method="post">
+    <button class=" btn btn-dark offset-5">Delete</button>
+</form>
+</div>
+<% } %>
+    </div>
+</div>

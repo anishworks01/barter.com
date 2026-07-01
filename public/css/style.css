@@ -1,0 +1,92 @@
+/* Existing page style; this file is now linked through the shared layout. */
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+.navbar{
+    background-color: white;
+    height: 5rem;
+}
+.nav-link{
+    color: black !important;
+}
+.fa-handshake{
+    font-size: 2rem;
+}
+/* footer */
+
+.f-info{
+    background-color:#ebebeb;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: space-evenly;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.f-info-links{
+    
+    width: 100%;
+}
+.f-info-links a {
+    text-decoration: none;
+    color: black;
+    margin-right: 0.5rem;
+}
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+.f-socials {
+    width: 100%;
+    font-size: 1.5rem;
+}
+.f-socials i{
+    margin-right: 1rem;
+}
+
+/* card */
+.card{
+    border: none !important;
+    margin: 2rem;
+}
+/* card image overlay effect */
+.card-img-overlay{
+    opacity: 0 !important;
+}
+.card-img-overlay:hover{
+    opacity: 0.2 !important;
+    
+    background-color: white !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%     !important;
+    object-fit:contain !important;
+}
+.card-body{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration:none !important;
+}
+.link{
+    text-decoration:none !important;
+}
+
+/* show */
+.show-img{
+    height: 30vh;
+
+}
+.btns{
+    display:flex;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
