@@ -6,7 +6,7 @@ if(process.env.NODE_ENV != "production"){
 const express = require('express');
 const app = express();
 const mongoose = require ("mongoose");
-const dns = require("dns");
+// const dns = require("dns");
 const Listing = require('./models/listing');
 const path = require ("path");
 const methodOverride = require("method-override");
@@ -28,7 +28,7 @@ require("dotenv").config()
 
 
 // changed: use public DNS servers so mongodb+srv Atlas lookup does not get refused
-dns.setServers(["8.8.8.8","1.1.1.1"]);
+// dns.setServers(["8.8.8.8","1.1.1.1"]);
 
 const dbUrl = process.env.ATLASDB_URL
 
