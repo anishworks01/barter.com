@@ -1,4 +1,6 @@
-const cloudinary = require('cloudinary').v2;
+// This old multer-storage-cloudinary version expects the root cloudinary module,
+// because it calls cloudinary.v2.uploader internally during image upload.
+const cloudinary = require('cloudinary');
 // multer-storage-cloudinary v2 exports a function directly, not a CloudinaryStorage class.
 const cloudinaryStorage = require('multer-storage-cloudinary');
 

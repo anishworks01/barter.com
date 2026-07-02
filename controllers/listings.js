@@ -1,4 +1,5 @@
 const Listing = require("../models/listing")
+const ExpressError = require("../utils/ExpressError")
 
 
 
@@ -22,8 +23,13 @@ module.exports.showListing = async (req,res)=>{
 }
 
 module.exports.createListing = async(req,res,next)=>{
-        let url = req.file.path;
-        let filename = req.file.filename;
+        if(!req.file){
+            throw new ExpressError(400,"Image upload failed. Please select an image and try again.");
+        }
+        // Cloudinary storage versions return different field names, so support both
+        // the newer multer path/filename fields and Cloudinary's url/public_id fields.
+        let url = req.file.path || req.file.secure_url || req.file.url;
+        let filename = req.file.filename || req.file.public_id;
         const newListing = new Listing(req.body.listing);
         newListing.owner = req.user._id;
         newListing.image = {url, filename}
@@ -48,8 +54,9 @@ module.exports.updateListing = async(req,res)=>{
     let {id}= req.params
     let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing})
     if(typeof req.file  !=="undefined"){
-    let url = req.file.path;
-    let filename = req.file.filename;
+    // Keep edit uploads compatible with both multer and Cloudinary response fields.
+    let url = req.file.path || req.file.secure_url || req.file.url;
+    let filename = req.file.filename || req.file.public_id;
     listing.image = {url, filename}
     await listing.save()
     }
