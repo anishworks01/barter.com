@@ -31,6 +31,8 @@ require("dotenv").config()
 // dns.setServers(["8.8.8.8","1.1.1.1"]);
 
 const dbUrl = process.env.ATLASDB_URL
+// Render provides the live port in process.env.PORT; locally we still use 8080.
+const port = process.env.PORT || 8080;
 
 
 async function main(){
@@ -120,6 +122,6 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs",{message})
 })
 
-app.listen(8080,()=>{
-    console.log("Server is Listening to port 8080")
+app.listen(port,()=>{
+    console.log(`Server is Listening to port ${port}`)
 })
