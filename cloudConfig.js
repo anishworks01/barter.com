@@ -9,6 +9,14 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET,
 });
 
+console.log("Cloudinary config:");
+console.log({
+    CLOUD_NAME: process.env.CLOUD_NAME,
+    CLOUD_API_KEY: process.env.CLOUD_API_KEY,
+    CLOUD_API_SECRET: process.env.CLOUD_API_SECRET ? "Present" : "Missing"
+});
+
+
 // v2 syntax: call cloudinaryStorage() directly so deployment does not crash with
 // "CloudinaryStorage is not a constructor".
 const storage = cloudinaryStorage({
