@@ -1,6 +1,4 @@
-// This old multer-storage-cloudinary version expects the root cloudinary module,
-// because it calls cloudinary.v2.uploader internally during image upload.
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 // multer-storage-cloudinary v2 exports a function directly, not a CloudinaryStorage class.
 const cloudinaryStorage = require('multer-storage-cloudinary');
 
@@ -14,7 +12,9 @@ cloudinary.config({
 // v2 syntax: call cloudinaryStorage() directly so deployment does not crash with
 // "CloudinaryStorage is not a constructor".
 const storage = cloudinaryStorage({
-  cloudinary: cloudinary,
+  // This old storage package calls cloudinary.v2.uploader internally,
+  // so pass the v2 API in the shape it expects.
+  cloudinary: { v2: cloudinary },
   folder: 'barter_DEV',
   allowedFormats:["png","jpg","jpeg"],
 });
