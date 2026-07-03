@@ -39,10 +39,10 @@
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Barter Your Product</a>
         <%# Use locals.currentUser so this partial does not crash when rendered from an error page. %>
-        <% if (!locals.currentUser) { %>
+        <% if (!currentUser) { %>
           <a class="nav-link " aria-current="page" href="/signup"><b>Sign Up</b></a>
           <a class="nav-link" href="/login"><b>Log In</b></a>
-        <% } if(locals.currentUser){ %>
+        <% } if(currentUser){ %>
           <a class="nav-link" href="/logout">Log Out</a>
         <% } %>
       </div>

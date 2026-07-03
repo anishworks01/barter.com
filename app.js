@@ -55,14 +55,14 @@ app.use(methodOverride("_method"))
 app.engine("ejs", ejsMate)
 app.use(express.static(path.join(__dirname,"public")))
 
-app.use((req,res,next)=>{
-    // Set safe defaults before session/passport run, so error pages and included EJS files
-    // can still render even if MongoDB session storage fails.
-    res.locals.success = [];
-    res.locals.error = [];
-    res.locals.currentUser = null;
-    next();
-});
+// app.use((req,res,next)=>{
+//     // Set safe defaults before session/passport run, so error pages and included EJS files
+//     // can still render even if MongoDB session storage fails.
+//     res.locals.success = [];
+//     res.locals.error = [];
+//     res.locals.currentUser = null;
+//     next();
+// });
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -94,14 +94,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// app.use((req,res,next)=>{
-//     // After passport.session(), req.user contains the logged-in user.
-//     // These locals are available in every EJS template, including navbar.ejs.
-//     res.locals.success = req.flash("success");
-//     res.locals.error = req.flash("error");
-//     res.locals.currentUser = req.user;
-//     next();
-// });
+app.use((req,res,next)=>{
+    // After passport.session(), req.user contains the logged-in user.
+    // These locals are available in every EJS template, including navbar.ejs.
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currentUser = req.user;
+    next();
+});
 
 // app.get("/",(req,res)=>{
 //     res.send("Hello World")

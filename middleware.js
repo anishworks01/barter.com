@@ -1,6 +1,8 @@
 const Listing = require("./models/listing");
 const { listingSchema } = require("./schema.js")
 const ExpressError = require("./utils/ExpressError")
+
+
 module.exports.isLoggedIn = (req,res,next)=>{
     if(!req.isAuthenticated()) {
         req.session.redirectUrl = req.originalUrl
