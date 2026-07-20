@@ -1,11 +1,18 @@
 <%# Added the shared layout so this page loads style.css. %>
 <%- layout("layouts/boilerplate.ejs") %>
+<style>
+    @media (max-width: 768px) {
+        .btns{
+            padding-left: 0.5rem;
+        }
+    }
+</style>
 <div class="row mt-3 ">
     <div class="col-8 offset-2">
         <h3>Listing Details</h3>
     </div>
 
-<div class="card col-6 offset-3 show-card">
+<div class="card col-8 offset-2 col-md-6 offset-md-3 show-card">
     <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing-img">
     <div class="card-body">
         <p class="card-text">
@@ -38,4 +45,4 @@
 </div>
 <% } %>
     </div>
-</div>
+
