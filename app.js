@@ -32,7 +32,7 @@ require("dotenv").config()
 
 const dbUrl = process.env.ATLASDB_URL
 // Render provides the live port in process.env.PORT; locally we still use 8080.
-const port = process.env.PORT || 8080;
+const port =  8080;
 
 
 async function main(){
