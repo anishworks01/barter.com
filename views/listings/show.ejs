@@ -29,7 +29,7 @@
     </div>
 </div>
 <% if(currentUser && currentUser._id.equals(listing.owner._id)){ %>
-<div class="btns mb-3">
+<div class="btns mb-3 pl-2">
     <a href="/listings/<%= listing._id %>/edit" class=" btn btn-outline-dark offset-3">Edit</a>
 
 <form action="/listings/<%= listing._id %>?_method=DELEtE" method="post">
